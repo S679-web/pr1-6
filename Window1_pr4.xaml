@@ -1,0 +1,50 @@
+﻿<Window x:Class="pr1_6.Window1_pr4"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Window1_Pr4"
+        mc:Ignorable="d"
+        Title="Window1_pr4" Height="450" Width="800">
+
+    <Grid>
+        <Window.DataContext>
+            <local:MainViewModel/>
+            <!-- Создаем экземпляр ViewModel -->
+        </Window.DataContext>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!-- Панель управления -->
+            <StackPanel Orientation="Horizontal" Margin="5">
+
+                <Label Content="Стиль кисти:"/>
+                <ComboBox ItemsSource="{Binding DrawingAttributesList}"
+                      SelectedItem="{Binding SelectedDrawingAttribute}"
+                      DisplayMemberPath="Color" Width="150">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Ellipse Width="12" Height="12" Fill="{Binding Color}"/>
+                                <TextBlock Text="{Binding Color, StringFormat={}}" Margin="5,0,0,0"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+
+                <Label Content="Режим рисования:"/>
+                <ComboBox ItemsSource="{Binding EditingModes}"
+                      SelectedItem="{Binding EditingMode}"
+                      Width="120"/>
+            </StackPanel>
+
+            <!-- InkCanvas для рисования -->
+            <InkCanvas Grid.Row="1" Background="White"
+                   EditingMode="{Binding EditingMode}"
+                   DefaultDrawingAttributes="{Binding SelectedDrawingAttribute}"/>
+        </Grid>
+</Window>
