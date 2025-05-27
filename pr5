@@ -1,0 +1,81 @@
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Shapes;
+
+namespace Pr5
+{
+    public partial class MainWindow : Window
+    {
+        private Point? _previousPoint = null;
+
+        public MainWindow()
+        {
+            InitializeComponent();
+
+            DrawingCanvas.MouseDown += Canvas_MouseDown;
+            DrawingCanvas.MouseMove += Canvas_MouseMove;
+            DrawingCanvas.MouseUp += Canvas_MouseUp;
+        }
+
+        private void Canvas_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (DrawMode.IsChecked == true)
+            {
+                _previousPoint = e.GetPosition(DrawingCanvas);
+            }
+        }
+
+        private void Canvas_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed && _previousPoint.HasValue && DrawMode.IsChecked == true)
+            {
+                Point currentPoint = e.GetPosition(DrawingCanvas);
+
+                Line line = new Line
+                {
+                    X1 = _previousPoint.Value.X,
+                    Y1 = _previousPoint.Value.Y,
+                    X2 = currentPoint.X,
+                    Y2 = currentPoint.Y,
+                    Stroke = GetSelectedBrush(),
+                    StrokeThickness = BrushSizeSlider.Value
+                };
+
+                DrawingCanvas.Children.Add(line);
+                _previousPoint = currentPoint;
+            }
+        }
+
+        private void Canvas_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            _previousPoint = null;
+        }
+
+        private Brush GetSelectedBrush()
+        {
+            if (ColorComboBox.SelectedItem is ComboBoxItem item)
+            {
+                string colorName = item.Content.ToString();
+
+                return colorName switch
+                {
+                    "Черный" => Brushes.Black,
+                    "Красный" => Brushes.Red,
+                    "Синий" => Brushes.Blue,
+                    "Зеленый" => Brushes.Green,
+                    "Желтый" => Brushes.Yellow,
+                    _ => Brushes.Black,
+                };
+            }
+
+            return Brushes.Black;
+        }
+        private void OpenMultiEditWindow_Click(object sender, RoutedEventArgs e)
+        {
+            var multiEditWindow = new MultiEditWindow();
+            multiEditWindow.Show();
+        }
+    }
+}
