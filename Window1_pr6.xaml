@@ -1,0 +1,12 @@
+<Window x:Class="pr5_6.Window1_pr6"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:pr5_6"
+        mc:Ignorable="d"
+        Title="Window1_pr6" Height="450" Width="800">
+    <Grid>
+        <Button Content="Открыть текстовый редактор" HorizontalAlignment="Center" VerticalAlignment="Center" Click="OpenTextEditor_Click"/>
+    </Grid>
+</Window>
