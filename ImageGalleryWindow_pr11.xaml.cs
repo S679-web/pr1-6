@@ -10,24 +10,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace pr11_13
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для ImageGalleryWindow_pr11.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class ImageGalleryWindow_pr11 : Window
     {
-        public MainWindow()
+        public ImageGalleryWindow_pr11()
         {
             InitializeComponent();
         }
-        private void OpenImageGallery_Click(object sender, RoutedEventArgs e)
-        {
-            var galleryWindow = new ImageGalleryWindow();
-            galleryWindow.Show();
-        }
-    }sS
+    }
 }
