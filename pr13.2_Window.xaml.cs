@@ -10,25 +10,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace pr13_UP
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для pr13.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class pr13 : Window
     {
-        public MainWindow()
+        public pr13()
         {
             InitializeComponent();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            pr13_2 pr13_2 = new pr13_2();
-            pr13_2.Show();
         }
     }
 }

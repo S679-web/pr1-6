@@ -1,12 +1,12 @@
-﻿<Window x:Class="pr13_UP.MainWindow"
+﻿<Window x:Class="pr13_UP.pr13"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:pr13_UP"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="pr13" Height="200" Width="300">
     <Grid>
-        <Button Content="Открыть второе окно" Click="Button_Click" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBlock Text="Это второе окно" HorizontalAlignment="Center" VerticalAlignment="Center"/>
     </Grid>
 </Window>
